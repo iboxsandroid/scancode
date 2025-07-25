@@ -52,7 +52,7 @@ afterEvaluate {
             register("release", MavenPublication::class) {
                 groupId = "com.github.iboxsandroid"
                 artifactId = "scancode"
-                version = "1.0.0"
+                version = "1.0.3"
 
                 artifact("$buildDir/outputs/aar/${project.name}-release.aar")
 
