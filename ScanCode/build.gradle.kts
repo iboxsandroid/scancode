@@ -4,8 +4,7 @@ import java.util.Locale
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-//    id("maven-publish")
-//    alias(libs.plugins.jetbrainsKotlinAndroidExtensions)
+   id("maven-publish")
 }
 
 android {
@@ -42,76 +41,47 @@ android {
         val variantName = name
         outputs.all {
             if (this is com.android.build.gradle.internal.api.ApkVariantOutputImpl) {
-                this.outputFileName = "your_custom_aar_name-$variantName.aar"
+                this.outputFileName = "scanCode-$variantName.aar"
             }
         }
     }
 }
 
-// 启用 AAR 打包
-// afterEvaluate {
-//    // build.gradle.kts (Module)
-// publishing {
-//     publications {
-//         create<MavenPublication>("release") {
-//             // 从组件中获取aar/jar
-//             from(components["release"])
-            
-//             // 配置Maven元数据
-//             groupId = "com.itgz8"
-//             artifactId = "scancode"
-//             version = "1.0.0"
-            
-//             // 添加Pom文件描述
-//             pom {
-//                 name.set("ScanCode")
-//                 description.set("A useful Android library")
-//                 url.set("https://github.com/example/mylibrary")
-                
-//                 licenses {
-//                     license {
-//                         name.set("The Apache License, Version 2.0")
-//                         url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-//                     }
-//                 }
-                
-//                 developers {
-//                     developer {
-//                         id.set("developer")
-//                         name.set("Developer Name")
-//                         email.set("developer@example.com")
-//                     }
-//                 }
-                
-//                 scm {
-//                     connection.set("scm:git:git://github.com/example/mylibrary.git")
-//                     developerConnection.set("scm:git:ssh://github.com/example/mylibrary.git")
-//                     url.set("https://github.com/example/mylibrary")
-//                 }
-//             }
-//         }
-//     }
-    
-//     // 配置仓库地址（示例为本地Maven）
-//     repositories {
-//         maven {
-//             name = "sonatype"
-//             url = uri(
-//                 if (version.toString().endsWith("SNAPSHOT")) 
-//                     "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-//                 else 
-//                     "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-//             )
-//             credentials {
-//                 username = sonatypeUsername
-//                 password = sonatypePassword
-//             }
-//         }
-//     }
-// }
+afterEvaluate {
+    publishing {
+        publications {
+            register("release", MavenPublication::class) {
+                groupId = "com.github.iboxsandroid"
+                artifactId = "scancode"
+                version = "1.0.0"
 
-// }
+                artifact("$buildDir/outputs/aar/${project.name}-release.aar")
 
+                pom {
+                    name.set("scancode")
+                    description.set("A short description of your module")
+                    url.set("https://github.com/iboxsandroid/scancode")
+                    licenses {
+                        license {
+                            name.set("MIT")
+                            url.set("https://opensource.org/licenses/MIT")
+                        }
+                    }
+                    developers {
+                        developer {
+                            id.set("itlattice")
+                            name.set("itlattice")
+                            email.set("itlattice@gmail.com")
+                        }
+                    }
+                    scm {
+                        url.set("https://github.com/iboxsandroid/scancode")
+                    }
+                }
+            }
+        }
+    }
+}
 dependencies {
 
     implementation(libs.androidx.core.ktx)
