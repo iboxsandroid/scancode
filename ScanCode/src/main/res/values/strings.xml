@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scan_line">ScanLine</string>
+    <string name="icon_photo">IconPhoto</string>
+    <string name="icon_close">关闭</string>
+    <string name="scanning_text">扫描中...</string>
+    <string name="scanning_failed">扫描失败，请重试</string>
+    <string name="scanning_succeeded_multi">扫描到多个二维码，请选择一个打开</string>
+    <string name="scanning_succeeded_single">扫描成功</string>
+    <string name="cancel_scan_result">取消</string>
+    <string name="scan_title">扫一扫</string>
+    <string name="open_flashlight">轻触照亮</string>
+    <string name="close_flashlight">轻触关闭</string>
+    <string name="flash_on_tip">闪光灯已打开</string>
+    <string name="flash_off_tip">闪光灯已关闭</string>
+    <string name="photo_preview">相册预览</string>
+</resources>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name" translatable="false">TestScaning</string>
+    <string name="icon_photo" translatable="false">IconPhoto</string>
+</resources>
