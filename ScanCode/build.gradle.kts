@@ -46,7 +46,6 @@ android {
         }
     }
 }
-
 afterEvaluate {
     publishing {
         publications {
@@ -80,6 +79,9 @@ afterEvaluate {
                 }
             }
         }
+    }
+    tasks.named("publishReleasePublicationToMavenLocal").configure {
+        dependsOn("bundleReleaseAar")
     }
 }
 dependencies {
